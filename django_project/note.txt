@@ -2,6 +2,10 @@ Admin
 -----
 Make migration before loggin in the admin panel for the first time.
 
+# To control models from admin page, we need to register models in the app/admin.py
+from blog.models import Post
+admin.site.register(Post)
+
 
 Models
 ------
