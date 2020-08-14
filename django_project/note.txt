@@ -1,3 +1,8 @@
+Admin
+-----
+Make migration before loggin in the admin panel for the first time.
+
+
 Routing
 -------
 In urls.py, we use a trailing slash after every route in the urlpatters, to avoid confusion.

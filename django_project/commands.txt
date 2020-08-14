@@ -90,9 +90,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 Migration
 ---------
+# 'makemigrations' initiates the migration and 'migrate' performs the migration.
+python manage.py makemigrations
 python manage.py migrate
-python manage.py makemigrations blog
-python manage.py migrate
+
 
 python manage.py shell
 from first_app.models import Topic
