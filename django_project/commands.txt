@@ -106,3 +106,12 @@ print(t)
 Create Super User
 -----------------
 python manage.py createsuperuser
+
+
+Users
+-----
+john_smith
+password@123
+
+mike
+password@123
