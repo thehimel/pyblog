@@ -3,6 +3,28 @@ Admin
 Make migration before loggin in the admin panel for the first time.
 
 
+Models
+------
+DateTimeField
+-------------
+Suppose in a Post model we have a field named date_posted.
+if we use, date_posted = models.DateTimeField(auto_now=True),
+it will take the current time and will get updated when we update the post.
+
+if we use, date_posted = models.DateTimeField(auto_now_add=True),
+it will take the current time but date can never be changed.
+
+Best option:
+from django.utils import timezone
+
+class Post(models.Model):
+    date_posted = models.DateTimeField(default=timezone.now)
+
+# Notice, use didn't use parenthesis after timezone.now.
+By this we are not executing timezone.now function at this point,
+instead, we are just passing the funtion as default value.
+
+
 Routing
 -------
 In urls.py, we use a trailing slash after every route in the urlpatters, to avoid confusion.
