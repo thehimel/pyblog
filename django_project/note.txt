@@ -24,6 +24,39 @@ class Post(models.Model):
 By this we are not executing timezone.now function at this point,
 instead, we are just passing the funtion as default value.
 
+Interactive Console
+-------------------
+# We can import and use django objects with shell.
+python manage.py shell
+
+from blog.models import Post
+from django.contrib.auth.models import User
+
+User.objects.all()  # Returns QuerySet with all users
+User.objects.first()  # Returns the first user
+User.objects.filter(username='john')  # Returns QuerySet with all users after filtering
+User.objects.filter(username='john').first()  # Returns the first user after filtering
+
+user = User.objects.filter(username='john').first()  # Saving the result in a variable
+user.id  # Returns the id of the user, i.e. 1
+user.pk  # Returns the primary key of the user, i.e. 1
+
+user = User.objects.get(id=1)  # Returns the user with that id.
+
+post_1 = Post(title='Blog 1', content='1st Post Content', author=user)
+post_1.save()  # Commit the post to the database
+Post.objects.all()  # Returns QuerySet with all the posts.
+
+
+
+Migration
+---------
+See the SQL code that a migration file executes in the backend
+------------------------------------------------------------------
+Example: python manage.py sqlmigrate blog 001
+Syntax: python manage.py sqlmigrate app_name migration_file_number
+
+
 
 Routing
 -------
