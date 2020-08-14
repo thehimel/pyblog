@@ -43,6 +43,7 @@ user.pk  # Returns the primary key of the user, i.e. 1
 
 user = User.objects.get(id=1)  # Returns the user with that id.
 
+# date_posted field is not required to be declared as it will be saved automatically.
 post_1 = Post(title='Blog 1', content='1st Post Content', author=user)
 post_1.save()  # Commit the post to the database
 Post.objects.all()  # Returns QuerySet with all the posts.
@@ -51,6 +52,21 @@ Post.objects.all()  # Returns QuerySet with all the posts.
 post_2 = Post(title='Blog 1', content='1st Post Content', author_id=user.id)
 post_1.save()
 Post.objects.all()
+
+post = Post.objects.first()  # Returns the first post
+post.content  # Returns the content of the selected post
+post.date_posted()  # Returns the DateTime object
+post.author  # Returns the user object
+post.author.email  # Returns the email of that author
+
+user.post_set.all()  # Returns QuerySet with all posts created by this user
+Syntax: user.modelName_set.all()
+
+# Create a post directly using post_set
+# External .save() is not required as it will commit automatically.
+user.post_set.create(title='Blog 3', content='3rd Blog Content')
+
+exit()
 
 
 
@@ -75,6 +91,14 @@ Template Inheritance
 --------------------
 In file.html during template inheritance, end a block by {% endblock block_name %} to avoid confusion.
 You can also use just {% endblock %}, but mentioning the name will help while ending multiple blocks.
+
+
+Template
+--------
+If you print the DateTimeField object in the template, you'll see the default formatting.
+But we can use custome filtering as mentioned in https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date
+Example: {{ post.date_posted|date:"F d, Y" }}
+This prints like January 01, 2020
 
 
 Hard Reload of Browser
