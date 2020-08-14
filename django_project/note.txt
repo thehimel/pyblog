@@ -47,6 +47,11 @@ post_1 = Post(title='Blog 1', content='1st Post Content', author=user)
 post_1.save()  # Commit the post to the database
 Post.objects.all()  # Returns QuerySet with all the posts.
 
+# author_id can also be used instead of author while creating the post
+post_2 = Post(title='Blog 1', content='1st Post Content', author_id=user.id)
+post_1.save()
+Post.objects.all()
+
 
 
 Migration
