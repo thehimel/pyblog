@@ -1,5 +1,9 @@
 from django.shortcuts import render
+from blog.models import Post
 
+
+"""
+# Post.objects.all() returns a QuerySet that can be imagined this way.
 posts = [
     {
         'author': 'John Smith',
@@ -14,11 +18,12 @@ posts = [
         'date_posted': 'September 22, 2020'
     }
 ]
+"""
 
 
 def home(request):
     context = {
-        'posts': posts
+        'posts': Post.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
