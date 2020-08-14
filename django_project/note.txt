@@ -1,4 +1,12 @@
+Routing
+-------
 In urls.py, we use a trailing slash after every route in the urlpatters, to avoid confusion.
 urlpatterns = [
     path('about/', views.about, name='blog-about'),
 ]
+
+Template Inheritance
+--------------------
+In file.html during template inheritance, end a block by {% endblock block_name %} to avoid confusion.
+You can also use just {% endblock %}, but mentioning the name will help while ending multiple blocks.
+
