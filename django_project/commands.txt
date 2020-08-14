@@ -1,3 +1,9 @@
+Versions
+--------
+Python 3.7
+Django 2.1
+Bootstrap 4.0
+
 Notes
 -----
 Make migration after installing new app or doing some major change in the settings.py file.
@@ -52,28 +58,19 @@ django-admin startapp blog
 python manage.py runserver
 
 
-Create the folders in the root directory:
+Create the folders in the blog directory:
 -----------------------------------------
-templates, static, media
+templates/blog, static/blog
 
 
 Edit the settings.py in the project directory:
 ----------------------------------------------
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, "static")
-MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
     ...
-    'blog',
 ]
-TEMPLATES = [
-    {
-        ...
-        'DIRS': [TEMPLATE_DIR],
-        ...
-    },
-]
+
 PASSWORD_HASHERS = [
     'django.contrib.auth.hashers.Argon2PasswordHasher',
     'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
@@ -89,15 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     ...
 ]
-
-STATICFILES_DIRS = [STATIC_DIR]
-
-# Media files (Uploaded by the users)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = MEDIA_DIR
-
-# Login URL for the users
-LOGIN_URL = '/blog/user_login/'
 
 
 Migration
