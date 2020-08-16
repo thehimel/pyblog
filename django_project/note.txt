@@ -149,6 +149,7 @@ crispy forms
 ------------
 This is used to style Django forms with Bootstrap. By default CRISPY_TEMPLATE_PACK = 'boostrap2'
 pip install django-crispy-forms
+conda install -c conda-forge django-crispy-forms
 
 -> settings.py
 INSTALLED_APPS = [

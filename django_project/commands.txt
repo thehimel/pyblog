@@ -18,6 +18,7 @@ conda deactivate
 conda activate env_pyblog
 django-admin startproject django_project
 django-admin startapp blog
+django-admin startapp users
 python manage.py runserver
 
 
@@ -47,6 +48,7 @@ pip install flake8
 
 Style Django forms with Bootstrap:
 pip install django-crispy-forms
+conda install -c conda-forge django-crispy-forms
 
 Libraries for user authentication:
 pip install bcrypt
@@ -69,6 +71,7 @@ Edit the settings.py in the project directory:
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
     'crispy_forms',
     ...
 ]
