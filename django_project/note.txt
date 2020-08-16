@@ -160,7 +160,7 @@ INSTALLED_APPS = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
--> Frontend code in the html file:
+-> Frontend code in the base.html file:
 {% extends 'blog/base.html' %}
 {% load crispy_forms_tags %}
 
