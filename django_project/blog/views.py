@@ -3,7 +3,7 @@ from blog.models import Post
 
 
 """
-# Post.objects.all() returns a QuerySet that can be imagined this way.
+# *? Post.objects.all() returns a QuerySet that can be imagined this way.
 posts = [
     {
         'author': 'John Smith',

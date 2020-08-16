@@ -82,6 +82,38 @@ Example: python manage.py sqlmigrate blog 001
 Syntax: python manage.py sqlmigrate app_name migration_file_number
 
 
+views.py
+--------
+Flash Messages
+--------------
+In form view we can define flash messages to be shown on the user's end.
+from django.contrib import messages
+
+Types of Messages:
+messages.info
+messages.success
+messages.warning
+messages.error
+messages.debug
+
+Example:
+Backend Code in views.py
+if form.is_valid():
+    messages.success(request, f'Account created for {username}!')
+
+Frontend clode in the html file:
+Django flash messages and Bootstrap alert has similaries.
+i.e. alert-info, alert-success, alert-warning
+message.tags will be replaced with given info/success/warning/error/debug etc.
+
+{% if messages %}
+    {% for message in messages %}
+        <div class='alert alert-{{ message.tags }}'>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
 
 Routing
 -------
