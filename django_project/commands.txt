@@ -94,7 +94,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Select Boostrap version in crispy_forms
-CRISPY_TEMPLATE_PACK = 'boostrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 Migration

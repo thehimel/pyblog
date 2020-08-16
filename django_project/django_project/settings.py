@@ -123,4 +123,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Select Boostrap version in crispy_forms
-CRISPY_TEMPLATE_PACK = 'boostrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
