@@ -18,7 +18,7 @@ it will take the current time and will get updated when we update the post.
 if we use, date_posted = models.DateTimeField(auto_now_add=True),
 it will take the current time but date can never be changed.
 
-Best option:
+-> Best option:
 from django.utils import timezone
 
 class Post(models.Model):
@@ -89,7 +89,7 @@ Flash Messages
 In form view we can define flash messages to be shown on the user's end.
 from django.contrib import messages
 
-Types of Messages:
+-> Types of Messages:
 messages.info
 messages.success
 messages.warning
@@ -97,11 +97,11 @@ messages.error
 messages.debug
 
 Example:
-Backend Code in views.py
+-> Backend code in views.py
 if form.is_valid():
     messages.success(request, f'Account created for {username}!')
 
-Frontend clode in the html file:
+-> Frontend code in the html file:
 Django flash messages and Bootstrap alert has similaries.
 i.e. alert-info, alert-success, alert-warning
 message.tags will be replaced with given info/success/warning/error/debug etc.
@@ -147,12 +147,21 @@ External Apps
 -------------
 crispy forms
 ------------
-This is used to style django forms.
+This is used to style Django forms with Bootstrap. By default CRISPY_TEMPLATE_PACK = 'boostrap2'
 pip install django-crispy-forms
 
-settings.py
+-> settings.py
 INSTALLED_APPS = [
     ...
     'crispy_forms',
     ...
 ]
+
+CRISPY_TEMPLATE_PACK = 'boostrap4'
+
+-> Frontend code in the html file:
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+
+Note: use {{ form|crispy }} to apply crispy filter.
+{{ form.as_p }} is not required since styling is controlled by crispy_forms.
