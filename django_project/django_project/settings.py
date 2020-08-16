@@ -124,3 +124,7 @@ STATIC_URL = '/static/'
 
 # Select Boostrap version in crispy_forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Login related URLs
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'blog-home'
