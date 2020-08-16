@@ -15,6 +15,11 @@ prompt $g
 conda activate env_pyblog
 conda deactivate
 
+conda activate env_pyblog
+django-admin startproject django_project
+django-admin startapp blog
+python manage.py runserver
+
 
 Env Initialization
 ------------------
@@ -40,6 +45,15 @@ Installed Packages
 Libary for linting:
 pip install flake8
 
+Style django forms:
+pip install django-crispy-forms
+settings.py
+INSTALLED_APPS = [
+    ...
+    'crispy_forms',
+    ...
+]
+
 Libraries for user authentication:
 pip install bcrypt
 pip install django[argon2]
@@ -49,13 +63,6 @@ pip install pillow
 If you get any error like jpeg support disabled:
 pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
 
-
-New Terminal > prompt $g
-
-conda activate env_pyblog
-django-admin startproject django_project
-django-admin startapp blog
-python manage.py runserver
 
 
 Create the folders in the blog directory:
@@ -68,6 +75,7 @@ Edit the settings.py in the project directory:
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'crispy_forms',
     ...
 ]
 

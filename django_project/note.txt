@@ -141,3 +141,18 @@ Hard Reload of Browser
 ----------------------
 In Windows, Ctrl + F5
 In Mac, Cmd + Shift + R
+
+
+External Apps
+-------------
+crispy forms
+------------
+This is used to style django forms.
+pip install django-crispy-forms
+
+settings.py
+INSTALLED_APPS = [
+    ...
+    'crispy_forms',
+    ...
+]
