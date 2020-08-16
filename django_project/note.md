@@ -1,3 +1,9 @@
+About
+---------------
+Editor: VS Code
+Theme: Dainty Andromeda
+
+
 Admin
 -----
 Make migration before logging in the admin panel for the first time.
@@ -27,6 +33,7 @@ class Post(models.Model):
 # Notice, use didn't use parenthesis after timezone.now.
 By this we are not executing timezone.now function at this point,
 instead, we are just passing the funtion as default value.
+
 
 Interactive Console
 -------------------
@@ -70,8 +77,59 @@ Syntax: user.modelName_set.all()
 # External .save() is not required as it will commit automatically.
 user.post_set.create(title='Blog 3', content='3rd Blog Content')
 
-exit()
 
+User and Profile in shell
+-------------------------
+# Run this in the shell after creating a profile
+from django.contrib.auth.models import User
+user = User.objects.filter(username='john').first()
+user  # Returns the user object
+user.profile  # Returns the profile object of the user
+user.profile.image  # Returns the image object of the user profile
+user.profile.image.width  # Returns the width(int)
+user.profile.image.url  # Returns the url(str) of the image.
+
+
+
+Signals
+-------
+A signal is used when we need to do something after a particular action.
+To perform a signal we need a sender, receiver, and the signal itself.
+Few developers include the signal section in the models.py but django
+documentation suggests to keep the signals in the app_name/signals.py
+to let the import work perfectly.
+
+Example: Create a profile after a user is created.
+Note: You must import the signals in the ready method of the AppConfig
+located in app_name/apps.py
+
+-> django_project/users/signals.py
+-> Syntax: project_root/app_name/signals.py
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from .models import Profile
+
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, **kwargs):
+    instance.profile.save()
+
+
+-> Exmplanation:
+In create_profile, sender=User, signal=post_save, receiver=create_profile.
+When a User is created a post_save signal is sent to the receiver
+create_profile. post_save passes User instance and created=True to
+create_profile. Upon getting the signal, it creates a profile.
+On the same way save_profile receiver is used to save the profile of the
+User instance.
 
 
 Migration
@@ -121,6 +179,12 @@ In urls.py, we use a trailing slash after every route in the urlpatters, to avoi
 urlpatterns = [
     path('about/', views.about, name='blog-about'),
 ]
+
+Serving files uploaded by a user during development
+---------------------------------------------------
+During development, user-uploaded media files from MEDIA_ROOT can be served
+using django.views.static.serve() view. See django documentation for more details.
+For production, don't use this approach. Read 'Deploying static files'.
 
 
 Template Inheritance

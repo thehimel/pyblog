@@ -122,6 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# User-uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Select Boostrap version in crispy_forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

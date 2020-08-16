@@ -1,3 +1,9 @@
+About
+---------------
+Editor: VS Code
+Theme: Dainty Andromeda
+
+
 Versions
 --------
 Python 3.7
@@ -93,6 +99,10 @@ AUTH_PASSWORD_VALIDATORS = [
     ...
 ]
 
+# User-uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Select Boostrap version in crispy_forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -123,7 +133,7 @@ python manage.py createsuperuser
 
 Users
 -----
-john_smith
+john
 password@123
 
 mike
