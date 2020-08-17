@@ -53,6 +53,7 @@ flake8, pillow, django-crispy-forms
 
 -> Libary for linting:
 pip install flake8
+pip install autopep8
 
 -> Library for pictures:
 pip install pillow
