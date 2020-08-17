@@ -49,22 +49,23 @@ conda create -n env_pyblog --file packages.txt
 
 Installed Packages
 ------------------
-Libary for linting:
+flake8, pillow, django-crispy-forms
+
+-> Libary for linting:
 pip install flake8
 
-Style Django forms with Bootstrap:
-pip install django-crispy-forms
-conda install -c conda-forge django-crispy-forms
-
-Libraries for user authentication:
-pip install bcrypt
-pip install django[argon2]
-
-Library for pictures:
+-> Library for pictures:
 pip install pillow
 If you get any error like jpeg support disabled:
 pip install pillow --global-option="build_ext" --global-option="--disable-jpeg"
 
+-> Style Django forms with Bootstrap:
+pip install django-crispy-forms
+conda install -c conda-forge django-crispy-forms
+
+-> Libraries for user authentication:
+pip install bcrypt
+pip install django[argon2]
 
 
 Create the folders in the blog directory:
