@@ -157,6 +157,13 @@ See the SQL code that a migration file executes in the backend
 Example: python manage.py sqlmigrate blog 001
 Syntax: python manage.py sqlmigrate app_name migration_file_number
 
+Reset Migration Manually
+------------------------
+1. Delete the sqlite database file (i.e. db.sqlite3) in the django project folder.
+2. Delete everything except __init__.py file from migration folder in all django apps.
+3. Make changes in your models (models.py) if needed.
+4. Run the commands python manage.py makemigrations and python manage.py migrate.
+
 
 views.py
 --------
