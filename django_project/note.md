@@ -101,9 +101,9 @@ with open('posts.json') as f:
 for post in posts_json:
     t = post['title]
     c = post['content']
-    a_id = post['user_id']
+    u_id = post['user_id']
 
-    post = Post(title=t, content=c, author_id=a_id)
+    post = Post(title=t, content=c, author_id=u_id)
     post.save()
 
 exit()

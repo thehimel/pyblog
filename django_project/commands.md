@@ -135,8 +135,6 @@ python manage.py createsuperuser
 
 Users
 -----
-john
-password@123
+john, mike, smith
 
-mike
 password@123
