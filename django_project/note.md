@@ -90,6 +90,24 @@ user.profile.image.width  # Returns the width(int)
 user.profile.image.url  # Returns the url(str) of the image.
 
 
+Creating Posts from posts.json with Shell
+-----------------------------------------
+import json
+from blog.models import Post
+
+with open('posts.json') as f:
+    posts_json = json.load(f)
+
+for post in posts_json:
+    t = post['title]
+    c = post['content']
+    a_id = post['user_id']
+
+    post = Post(title=t, content=c, author_id=a_id)
+    post.save()
+
+exit()
+
 
 Signals
 -------
@@ -199,6 +217,37 @@ If you print the DateTimeField object in the template, you'll see the default fo
 But we can use custome filtering as mentioned in https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#date
 Example: {{ post.date_posted|date:"F d, Y" }}
 This prints like January 01, 2020
+
+
+Pagination in Shell
+-------------------
+from django.core.paginator import Paginator
+
+posts = ['1st Page', '2nd Page', '3rd Page', '4th Page', '5th Page']
+
+posts_per_page = 2
+p = Paginator(posts, posts_per_page)
+
+p.num_pages  # Returns total number(int) of pages: 3
+for page in p.page_range:
+    print(page)  # Returns every page numbers: 1, 2, 3
+
+p1 = p.page(1)  # 1st page which is an object: <Page 1 of 3>
+p1.number  # Returns the page number(int): 1
+
+p1.object_list  # ['1st Page', '2nd Page']
+p1.has_previous()  # Returns True/False if previous page exists.
+p1.has_next()  # Returns True/False if next page exists.
+p1.next_page_number()  # Returns the number(int) of the next page
+
+Pagination with View
+--------------------
+Edit the class PostListView() in blog/views.py and add:
+paginate_by = 10  # Enables pagination as 10 posts per page
+NB: Add the page buttons in the frontend.
+URL to load the first page: domain.com or domain.com/?page=1
+URL to load other pages: domain.com/?page=2 | domain.com/?page=3
+
 
 
 Hard Reload of Browser
