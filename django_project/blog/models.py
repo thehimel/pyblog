@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
+# User is the bult-in model provided by django
+# User-Post has one-to-many relationship.
+# One user can have multiple posts.
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
@@ -15,8 +18,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
-
-
-# User is the bult-in model provided by django
-# User-Post has one-to-many relationship.
-# One user can have multiple posts.
