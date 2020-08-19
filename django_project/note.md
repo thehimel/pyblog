@@ -225,9 +225,9 @@ But we can use custome filtering as mentioned in https://docs.djangoproject.com/
 Example: {{ post.date_posted|date:"F d, Y" }}
 This prints like January 01, 2020
 
-Password Reset Templates Redirections
+Password Reset URL Redirections
 -------------------------------------
-
+password-reset -> password-reset/done -> password-reset-confirm/<uidb64>/<token>/ -> password-reset-complete
 
 
 Pagination in Shell
