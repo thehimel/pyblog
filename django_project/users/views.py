@@ -14,7 +14,7 @@ def register(request):
                 request, f'Congrats {username}! Account created. Log in now.')
             return redirect('login')
     else:
-        form = UserRegisterForm()
+        form = UserRegisterForm()  # Not POST, means GET.
     return render(request, 'users/register.html', {'form': form})
 
 

@@ -18,38 +18,53 @@ def home(request):
     return render(request, 'blog/home.html', context)
 
 
+# Using ListView to list all the posts
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/home.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/home.html'  # Default: <app>/<model>_<viewtype>.html
+
+    # To use this name as the context in frontend
     context_object_name = 'posts'
+
     ordering = ['-date_posted']
-    paginate_by = 5
+    paginate_by = 5  # Posts per page
 
 
+# Listing all posts by the specific user
 class UserPostListView(ListView):
     model = Post
-    template_name = 'blog/user_posts.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
     paginate_by = 5
 
     def get_queryset(self):
+        # Returning the user if exists else 404
         user = get_object_or_404(User, username=self.kwargs.get('username'))
+
+        # Returning all posts by that user with descending (-ve) date ordering
         return Post.objects.filter(author=user).order_by('-date_posted')
 
 
+# Post details
 class PostDetailView(DetailView):
     model = Post
 
 
+# Create a new post with CreateView
+# Login is required to create a new post thus LoginRequiredMixin is used
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
 
     def form_valid(self, form):
+        # Selecting the present user as the author of this post
         form.instance.author = self.request.user
         return super().form_valid(form)
 
 
+# Update a post with UpdateView
+# Login is required to create a new post thus LoginRequiredMixin is used
+# User must pass few tests thus UserPassesTestMixin is used
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     fields = ['title', 'content']
@@ -60,6 +75,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         post = self.get_object()
+        # Logged in user must be the author of this post
         if self.request.user == post.author:
             return True
         return False

@@ -5,10 +5,12 @@ from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
+    # Fields that are not included in the model used in Meta class by default.
     email = forms.EmailField()
 
     class Meta:
         model = User
+        # Fields to include in the form
         fields = ['username', 'email', 'password1', 'password2']
 
 

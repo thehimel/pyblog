@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from PIL import Image
 
 
+# Adding new fields to the user with a OneToOne relation.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(
@@ -10,6 +11,8 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+    # Overriding the save method and resizing image
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
