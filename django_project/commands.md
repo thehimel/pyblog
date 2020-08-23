@@ -49,7 +49,7 @@ conda create -n env_pyblog --file packages.txt
 
 Installed Packages
 ------------------
-flake8, pillow, django-crispy-forms
+flake8, autopep8, pillow, django-crispy-forms
 
 -> Libary for linting:
 pip install flake8
