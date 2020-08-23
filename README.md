@@ -119,7 +119,7 @@ git push heroku master
 * [Himel Das](https://www.linkedin.com/in/himeldas/)
 
 ## Acknowledgements
-This project is created while studying Django Full-Featured Web App by Corey Schafer in YouTube. Special thanks to Corey Schafer for creating such a beautiful course demostrating each part so beautifully.
+This project is created while studying Django Full-Featured Web App by Corey Schafer in YouTube. Special thanks to Corey Schafer for creating such a nice course demostrating each part so beautifully.
 
 * [YouTube Playlist](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
 * [GitHub Repository](https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog)
