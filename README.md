@@ -123,3 +123,9 @@ This project is created while studying Django Full-Featured Web App by Corey Sch
 
 * [YouTube Playlist](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p)
 * [GitHub Repository](https://github.com/CoreyMSchafer/code_snippets/tree/master/Django_Blog)
+
+## Note
+For special commands and detailed note refer to the following links:
+
+* [commands.md](./django_project/commands.md)
+* [note.md](./django_project/note.md)
