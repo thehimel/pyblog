@@ -131,10 +131,3 @@ print(t)
 Create Super User
 -----------------
 python manage.py createsuperuser
-
-
-Users
------
-john, mike, smith
-
-password@123
